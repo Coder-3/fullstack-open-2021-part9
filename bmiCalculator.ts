@@ -14,11 +14,11 @@ const parseArguments = (args: Array<string>): BmiValues => {
     return {
       height,
       weight
-    }
+    };
   } else {
     throw new Error('Provided values were not numbers!');
   }
-}
+};
 
 export const calculateBmi = (height: number, weight: number): string => {
   const bmi = weight / (height / 100)**2;
@@ -32,11 +32,12 @@ export const calculateBmi = (height: number, weight: number): string => {
   } else {
     return 'Obese';
   }
-}
+};
 
 try {
   const { height, weight } = parseArguments(process.argv);
   console.log(calculateBmi(height, weight));
 } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   console.log('Error:', error.message);
 }

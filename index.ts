@@ -4,7 +4,7 @@ const app = express();
 
 app.get('/hello', (_req, res) => {
   res.send('Hello Full Stack');
-})
+});
 
 // todo: error handling
 app.get('/bmi', (req, res) => {
@@ -12,12 +12,12 @@ app.get('/bmi', (req, res) => {
   const weight = Number(req.query.weight);
 
   if (isNaN(Number(height)) || isNaN(Number(weight))) {
-    res.status(400).send({ error: 'malformatted parameters' })
+    res.status(400).send({ error: 'malformatted parameters' });
   }
   const bmi = calculateBmi(height, weight);
 
   res.send({ height, weight, bmi });
-})
+});
 
 const PORT = 3003;
 app.listen(PORT, () => {

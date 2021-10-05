@@ -16,13 +16,13 @@ interface Values {
 const parseArgs = (args: Array<string>): Values => {
   if (args.length < 4) throw new Error('not enough arguments');
 
-  args.slice(2, args.length).forEach(arg => { if (isNaN(Number(arg))) throw new Error(`Provided value not a number: ${arg}`) });
+  args.slice(2, args.length).forEach(arg => { if (isNaN(Number(arg))) throw new Error(`Provided value not a number: ${arg}`); });
 
   const target = Number(args[2]);
   const hours = args.slice(3, args.length).map(arg => Number(arg));
 
   return { target, hours };
-}
+};
 
 const calculateExercises = (hours: Array<number>, target: number): Results => {
   const periodLength = hours.length;
@@ -45,11 +45,12 @@ const calculateExercises = (hours: Array<number>, target: number): Results => {
   }
 
   return { periodLength, trainingDays, success, rating, ratingDescription, target, average };
-}
+};
 
 try {
   const { target, hours } = parseArgs(process.argv);
   console.log(calculateExercises(hours, target));
 } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   console.log('Error, something bad happened:', error.message);
 }
