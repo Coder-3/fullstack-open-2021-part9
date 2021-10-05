@@ -24,7 +24,7 @@ const parseArgs = (args: Array<string>): Values => {
   return { target, hours };
 };
 
-const calculateExercises = (hours: Array<number>, target: number): Results => {
+export const calculateExercises = (hours: Array<number>, target: number): Results => {
   const periodLength = hours.length;
   const average = hours.reduce((a, b) => a + b) / periodLength;
   const trainingDays = hours.reduce((a, b) => b === 0 ? a + 1 : a);
